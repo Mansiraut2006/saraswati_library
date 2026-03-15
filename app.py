@@ -860,9 +860,12 @@ def seed_books():
 
     db.session.commit()
     logging.info(f"Added {len(books_list)} books to database")
+    # Create database and seed books OUTSIDE the main block 
+# so Gunicorn executes it on Render
+with app.app_context():
+    db.create_all()
+    seed_books()
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        seed_books()
-    app.run(host='0.0.0.0', port=5000, debug=True) 
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
