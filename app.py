@@ -71,8 +71,11 @@ def contact_page():
 def rules_page():
     return render_template('rules.html')
 
+<<<<<<< HEAD
 # ==================== PAGE ROUTES ====================
 
+=======
+>>>>>>> b2d1bd28c58d2cc29eb3aba2b65c0ea3fb1ac88e
 # ... (other routes)
 
 @app.route('/view_users')
@@ -88,10 +91,14 @@ def admin_view_users():  # <--- Changed name from view_users to admin_view_users
     from models import User
     users = User.query.all() 
     return render_template('view_users.html', users=users)
+<<<<<<< HEAD
 
 # ... (rest of your code)
 
+=======
+>>>>>>> b2d1bd28c58d2cc29eb3aba2b65c0ea3fb1ac88e
 
+# ... (rest of your code)
 @app.route('/register', methods=['POST'])
 def register():
     try:
