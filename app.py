@@ -71,20 +71,26 @@ def contact_page():
 def rules_page():
     return render_template('rules.html')
 
-<<<<<<< HEAD
+# ==================== PAGE ROUTES ====================
+
+# ... (other routes)
+
 @app.route('/view_users')
 def view_users():
-    # This fetches everyone from your User table
-    from models import User  # Make sure 'User' matches your class name
+    # Keep this one as is
+    from models import User
     all_users = User.query.all()
     return render_template('view_users.html', users=all_users)
-=======
+
 @app.route('/admin/users')
-def view_users():
+def admin_view_users():  # <--- Changed name from view_users to admin_view_users
     # This assumes your User model is named 'User'
+    from models import User
     users = User.query.all() 
     return render_template('view_users.html', users=users)
->>>>>>> 252ce7c28c1b8d4dd7d4338a66eeaa3f2e87fcbf
+
+# ... (rest of your code)
+
 
 @app.route('/register', methods=['POST'])
 def register():
