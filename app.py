@@ -70,12 +70,15 @@ def contact_page():
 @app.route('/rules')
 def rules_page():
     return render_template('rules.html')
-
-<<<<<<< HEAD
-# ==================== PAGE ROUTES ====================
-
-=======
->>>>>>> b2d1bd28c58d2cc29eb3aba2b65c0ea3fb1ac88e
+@app.route('/search', methods=['GET'])
+def search_books():
+    query = request.args.get('query')
+    if query:
+        # Searches for books where the name contains the query string
+        results = Book.query.filter(Book.name.contains(query)).all()
+    else:
+        results = []
+    return render_template('book.html', books=results)
 # ... (other routes)
 
 @app.route('/view_users')
@@ -91,12 +94,6 @@ def admin_view_users():  # <--- Changed name from view_users to admin_view_users
     from models import User
     users = User.query.all() 
     return render_template('view_users.html', users=users)
-<<<<<<< HEAD
-
-# ... (rest of your code)
-
-=======
->>>>>>> b2d1bd28c58d2cc29eb3aba2b65c0ea3fb1ac88e
 
 # ... (rest of your code)
 @app.route('/register', methods=['POST'])
