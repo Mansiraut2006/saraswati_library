@@ -83,9 +83,9 @@ def search_books():
 
 @app.route('/view_users')
 def view_users():
-    # Keep this one as is
     from models import User
     all_users = User.query.all()
+    print(f"DEBUG: Found {len(all_users)} users in database") # This shows in your terminal
     return render_template('view_users.html', users=all_users)
 
 @app.route('/admin/users')
