@@ -14,7 +14,8 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 app = Flask(__name__)
 app.static_folder = 'static'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'instance', 'users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Import db from models
