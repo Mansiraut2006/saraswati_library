@@ -350,11 +350,12 @@ def delete_book():
 
 # Seed initial books (NEW FUNCTION ADDED)
 def seed_books():
-    # Check if the database is already seeded
+    # Only seed if the table is empty
     if Book.query.first() is not None:
-        logging.info("Books already exist in database. Skipping seed.")
+        logging.info("Database already seeded. Skipping...")
         return
     
+    # ... rest of your seeding code ...
     books_list = [
     # First 100 Unique Books
     ("Python Programming", "Guido van Rossum"),
