@@ -71,12 +71,20 @@ def contact_page():
 def rules_page():
     return render_template('rules.html')
 
+<<<<<<< HEAD
 @app.route('/view_users')
 def view_users():
     # This fetches everyone from your User table
     from models import User  # Make sure 'User' matches your class name
     all_users = User.query.all()
     return render_template('view_users.html', users=all_users)
+=======
+@app.route('/admin/users')
+def view_users():
+    # This assumes your User model is named 'User'
+    users = User.query.all() 
+    return render_template('view_users.html', users=users)
+>>>>>>> 252ce7c28c1b8d4dd7d4338a66eeaa3f2e87fcbf
 
 @app.route('/register', methods=['POST'])
 def register():
