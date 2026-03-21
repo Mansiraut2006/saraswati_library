@@ -863,11 +863,16 @@ def seed_books():
 
     db.session.commit()
     logging.info(f"Added {len(books_list)} books to database")
-    # Create database and seed books OUTSIDE the main block 
-# so Gunicorn executes it on Render
+    # ==================== DATABASE INITIALIZATION ====================
+# This must be outside the __main__ block so Render/Gunicorn can see it
 with app.app_context():
-    db.create_all()
-    seed_books()
+    try:
+        logging.info("Checking database tables...")
+        db.create_all()
+        seed_books()
+        logging.info("Database initialization complete.")
+    except Exception as e:
+        logging.error(f"Database error during startup: {e}")
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
