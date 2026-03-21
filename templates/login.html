@@ -201,6 +201,7 @@ function login() {
         } else {
             msg.style.color = "red";
             msg.innerText = data.message;
+            genCaptcha();
         }
     })
     .catch(() => {
