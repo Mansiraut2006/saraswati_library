@@ -71,6 +71,7 @@ def contact_page():
 @app.route('/rules')
 def rules_page():
     return render_template('rules.html')
+
 @app.route('/search', methods=['GET'])
 def search_books():
     query = request.args.get('query')
