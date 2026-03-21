@@ -68,9 +68,9 @@ def about_page():
 def contact_page():
     return render_template('contact.html')
 
-@app.route('/rules')
+@app.route('/Rules')
 def rules_page():
-    return render_template('rules.html')
+    return render_template('Rules.html')
 
 @app.route('/search', methods=['GET'])
 def search_books():
